@@ -1,7 +1,7 @@
 ### Hi there 👋
 #### I'm Jaiman Munshi from Ridge High School class of 2024.
 * I'm interested in machine learning.
-* I currently intend to learn web development with HTML, Python Flask, and C++.
+* I currently intend to learn web development with HTML/CSS and JavaScript/Python Flask
 
 <!--
 **jaimanm/jaimanm** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
