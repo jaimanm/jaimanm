@@ -5,6 +5,7 @@
 * I am currently learning front-end with HTML/CSS/JavaScript.
 * I am interested in machine learning
 
+#### Check out my repositories below!
 <!--
 **jaimanm/jaimanm** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
