@@ -1,5 +1,5 @@
 ### Hi there 👋
-#### I'm Jaiman Munshi, a junior at Ridge High School (Class of 2024) in Basking Ridge, NJ.
+#### I'm Jaiman Munshi, a senior at Ridge High School (Class of 2024) in Basking Ridge, NJ.
 
 * I can code in Python and Java.
 * I am currently learning front-end with HTML/CSS/JavaScript.
