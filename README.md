@@ -39,8 +39,8 @@
 | Project                                                                | Description                                                                                                                                                                | Technologies Used                               |
 | ---------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
 | **Sen2Fire Wildfire Detection** <br/> [jaimanm/wildfire-detection](https://github.com/jaimanm/wildfire-detection) | A UNet-based segmentation model to detect wildfires from satellite imagery, accelerated on HPC. Currently integrating quantum circuits to enhance model complexity.            | `PyTorch` `PennyLane` `HPC` `Bash`              |
-| **Trace: Parkinson's Monitoring**                                     | A health-tech platform for remote patient monitoring. Trained an XGBoost model on multimodal data to achieve 91% accuracy in classifying Parkinson's motor skill metrics. | `React` `Flask` `Supabase` `OpenCV` `XGBoost`   |
-| **Captcha Plus**                                                       | A novel authentication system using real-time webcam hand gestures, replacing traditional CAPTCHA with an interactive and accessible user verification method.                 | `OpenCV` `Mediapipe` `Flask` `NumPy`            |
+| **Trace: Parkinson's Monitoring** <br/> [devpost](https://devpost.com/software/trace-34zsjm) | A health-tech platform for remote patient monitoring. Trained an XGBoost model on multimodal data to achieve 91% accuracy in classifying Parkinson's motor skill metrics. | `React` `Flask` `Supabase` `OpenCV` `XGBoost`   |
+| **Captcha Plus** <br/> (Hackathon Winner) | A novel authentication system using real-time webcam hand gestures, replacing traditional CAPTCHA with an interactive and accessible user verification method.                 | `OpenCV` `Mediapipe` `Flask` `NumPy`            |
 
 ---
 
