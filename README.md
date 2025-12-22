@@ -1,6 +1,6 @@
 # Hi, I'm Jaiman Munshi 👋
 
-> Aspiring quantum technologist and machine learning enthusiast, passionate about building next-gen solutions at the intersection of AI, physics, and computation. My journey is fueled by a drive to explore the frontiers of quantum computing—always seeking to bridge cutting-edge research with impactful, real-world applications.
+> Aspiring quantum software engineer and machine learning enthusiast, passionate about building next-gen solutions at the crossroads of AI, quantum, and SWE.
 
 <p align="left">
   <a href="https://www.linkedin.com/in/jaimanmunshi" target="_blank">
@@ -15,8 +15,8 @@
 
 ### 🚀 About Me
 
--   🎓 **Education:** B.S. in Computer Science at the **University of Maryland**, with a concentration in Machine Learning and minors in Physics and Quantum Science & Engineering.
--   🔬 **Research:** Currently conducting Quantum Machine Learning research, using **Qiskit** and **IBM Quantum** hardware to model quantum phenomena.
+-   🎓 **Education:** B.S. in Computer Science at the **University of Maryland**, with a concentration in Machine Learning and minors in Quantum Science & Engineering and Statistics.
+-   🔬 **Research:** Currently conducting Quantum Machine Learning research, using **Pennylane** and **IonQ** hardware to model quantum phenomena.
 -   🔭 **Interests:** Exploring the frontiers where quantum computing, AI, and high-performance computing intersect to solve complex problems.
 -   📫 **Contact:** Feel free to reach out via [jaimanmunshi@gmail.com](mailto:jaimanmunshi@gmail.com).
 
