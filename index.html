@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jaiman Munshi - Quantum Computing Researcher & ML Engineer</title>
+    <meta name="description" content="Jaiman Munshi's personal portfolio showcasing quantum computing research, machine learning projects, and software engineering expertise at the intersection of AI and quantum technology.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    
+    <!-- Splitting CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'quantum-navy': '#0B1426',
+                        'quantum-silver': '#E8EDF5',
+                        'ionq-teal': '#2DD4BF',
+                        'plasma-purple': '#8B5CF6',
+                        'matrix-green': '#10B981',
+                        'warm-amber': '#F59E0B',
+                        'neon-blue': '#00D4FF',
+                        'neon-violet': '#8B5CF6'
+                    },
+                    fontFamily: {
+                        'display': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            background: linear-gradient(135deg, #0B1426 0%, #1a2332 100%);
+            overflow-x: hidden;
+        }
+        
+        .quantum-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.1;
+        }
+        
+        .hero-image {
+            background-image: url('resources/hero-quantum.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .glass-effect {
+            background: rgba(11, 20, 38, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(45, 212, 191, 0.2);
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #2DD4BF, #8B5CF6);
+            transition: left 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            left: 0;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px) rotateX(5deg);
+            box-shadow: 0 20px 40px rgba(45, 212, 191, 0.3);
+        }
+        
+        .skill-bar {
+            background: linear-gradient(90deg, #2DD4BF 0%, #8B5CF6 100%);
+            height: 4px;
+            border-radius: 2px;
+            transform-origin: left;
+            transform: scaleX(0);
+            animation: skillGrow 2s ease-out forwards;
+        }
+        
+        @keyframes skillGrow {
+            to { transform: scaleX(1); }
+        }
+        
+        .quantum-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #2DD4BF;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.7; }
+            50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+        }
+        
+        .typewriter-cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #2DD4BF, #8B5CF6);
+            transition: left 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            left: 0;
+        }
+        
+        .achievement-card {
+            transition: all 0.3s ease;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(45, 212, 191, 0.2);
+        }
+        
+        /* Q-Sphere Styles */
+        .qsphere-container {
+            width: 100%;
+            height: 500px;
+            position: relative;
+            cursor: grab;
+        }
+        
+        .qsphere-container:active {
+            cursor: grabbing;
+        }
+        
+        .measure-btn {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #2DD4BF, #8B5CF6);
+            color: #0B1426;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .measure-btn:hover {
+            transform: translateX(-50%) scale(1.05);
+            box-shadow: 0 5px 20px rgba(45, 212, 191, 0.4);
+        }
+        
+        /* Quantum Circuit Styles */
+        .quantum-circuit {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            padding: 20px;
+        }
+        
+        .circuit-wire {
+            stroke: #E8EDF5;
+            stroke-width: 3;
+            opacity: 0.8;
+        }
+        
+        .quantum-gate {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quantum-gate:hover {
+            transform: scale(1.1);
+            filter: drop-shadow(0 0 10px #2DD4BF);
+        }
+        
+        .gate-rect {
+            fill: rgba(45, 212, 191, 0.1);
+            stroke: #2DD4BF;
+            stroke-width: 2;
+            rx: 8;
+            cursor: pointer;
+        }
+        
+        .gate-text {
+            fill: #2DD4BF;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            font-weight: 600;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+        
+        /* Measurement Histogram */
+        .histogram-container {
+            width: 100%;
+            height: 300px;
+        }
+        
+        /* Achievement Cards - Fixed */
+        .achievement-card {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(45, 212, 191, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .achievement-card:hover::before {
+            opacity: 1;
+        }
+        
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(45, 212, 191, 0.3);
+        }
+        
+        .eagle-scout-badge {
+            background: linear-gradient(135deg, #00D4FF, #8B5CF6, #00D4FF);
+            background-size: 200% 200%;
+            animation: subtle-glow 4s ease-in-out infinite;
+        }
+        
+        @keyframes subtle-glow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+    </style>
+</head>
+<body class="font-display text-quantum-silver">
+    <!-- Quantum Background Animation -->
+    <div id="quantum-bg" class="quantum-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-effect">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-ionq-teal">
+                    <span class="font-mono">JM</span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link text-quantum-silver hover:text-ionq-teal transition-colors">Home</a>
+                    <a href="projects.html" class="nav-link text-quantum-silver hover:text-ionq-teal transition-colors">Projects</a>
+                    <a href="about.html" class="nav-link text-quantum-silver hover:text-ionq-teal transition-colors">About</a>
+                    <a href="contact.html" class="nav-link text-quantum-silver hover:text-ionq-teal transition-colors">Contact</a>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/jaimanm" target="_blank" class="text-quantum-silver hover:text-ionq-teal transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/jaimanmunshi" target="_blank" class="text-quantum-silver hover:text-ionq-teal transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero-image min-h-screen flex items-center relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-quantum-navy/90 to-quantum-navy/70"></div>
+        <div class="max-w-7xl mx-auto px-6 py-20 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                        <span class="text-ionq-teal">Jaiman</span><br>
+                        <span class="text-quantum-silver">Munshi</span>
+                    </h1>
+                    <div class="text-xl lg:text-2xl text-quantum-silver/80 font-mono">
+                        <span id="typed-text"></span><span class="typewriter-cursor">|</span>
+                    </div>
+                    <p class="text-lg text-quantum-silver/70 max-w-2xl leading-relaxed">
+                        Aspiring quantum software engineer and machine learning enthusiast, passionate about building next-gen solutions at the crossroads of AI, quantum computing, and software engineering. Currently conducting research with real IonQ quantum processors at the National Quantum Laboratory.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="scrollToSection('quantum-portfolio')" class="px-8 py-3 bg-ionq-teal text-quantum-navy font-semibold rounded-lg hover:bg-ionq-teal/80 transition-all transform hover:scale-105">
+                            Explore My Work
+                        </button>
+                        <a href="about.html" class="px-8 py-3 border-2 border-ionq-teal text-ionq-teal font-semibold rounded-lg hover:bg-ionq-teal hover:text-quantum-navy transition-all">
+                            My Story
+                        </a>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="w-full h-96 relative">
+                        <img src="resources/profile-avatar.jpg" alt="Jaiman Munshi" class="w-full h-full object-cover rounded-2xl shadow-2xl">
+                        <div class="absolute inset-0 bg-gradient-to-t from-quantum-navy/50 to-transparent rounded-2xl"></div>
+                    </div>
+                    <!-- Floating particles -->
+                    <div class="quantum-particle" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+                    <div class="quantum-particle" style="top: 60%; left: 80%; animation-delay: 2s;"></div>
+                    <div class="quantum-particle" style="top: 40%; left: 20%; animation-delay: 4s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Featured <span class="text-ionq-teal">Projects</span>
+                </h2>
+                <p class="text-xl text-quantum-silver/70 max-w-3xl mx-auto">
+                    A showcase of my work in quantum computing, machine learning, and software engineering.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12 mb-20">
+                <!-- Sen2Fire Project -->
+                <div class="project-card glass-effect rounded-xl p-8" data-category="quantum ml research">
+                    <div class="relative mb-6 overflow-hidden rounded-lg">
+                        <img src="resources/wildfire-sat.jpg" alt="Sen2Fire Wildfire Detection" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-quantum-navy/80 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-ionq-teal text-quantum-navy text-sm font-semibold rounded-full">Research</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-quantum-silver mb-4">Sen2Fire Wildfire Detection</h3>
+                    <p class="text-quantum-silver/70 mb-6 leading-relaxed">
+                        A cutting-edge UNet-based segmentation model for detecting wildfires from multispectral satellite imagery. This project uniquely combines classical deep learning with quantum computing enhancements, using PennyLane to integrate quantum variational circuits at the model's bottleneck.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-ionq-teal">72h → 1h</div>
+                            <div class="text-sm text-quantum-silver/60">Training Time Reduction</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-matrix-green">HPC</div>
+                            <div class="text-sm text-quantum-silver/60">GPU Acceleration</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-matrix-green/20 text-matrix-green text-sm rounded">PyTorch</span>
+                        <span class="px-3 py-1 bg-plasma-purple/20 text-plasma-purple text-sm rounded">PennyLane</span>
+                        <span class="px-3 py-1 bg-ionq-teal/20 text-ionq-teal text-sm rounded">HPC</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/jaimanm/wildfire-detection" target="_blank" class="text-ionq-teal hover:text-ionq-teal/80 font-mono transition-colors">View Code →</a>
+                        <span class="text-quantum-silver/50 text-sm">Aug 2025 - Present</span>
+                    </div>
+                </div>
+                
+                <!-- Trace Project -->
+                <div class="project-card glass-effect rounded-xl p-8" data-category="ml web">
+                    <div class="relative mb-6 overflow-hidden rounded-lg">
+                        <img src="resources/parkinson-tech.jpg" alt="Trace Parkinson's Monitoring" class="w-full h-64 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-quantum-navy/80 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-matrix-green text-quantum-navy text-sm font-semibold rounded-full">Health Tech</span>
+                        </div>
+                    </div>
+                    <h3 class="text-2xl font-bold text-quantum-silver mb-4">Trace: Parkinson's Monitoring</h3>
+                    <p class="text-quantum-silver/70 mb-6 leading-relaxed">
+                        A comprehensive health-tech platform for remote Parkinson's disease monitoring, achieving 91% accuracy across 5 distinct motor skill metrics. The system combines 264 tracing images with 792 biosensor time series samples, enabling real-time disease progression monitoring.
+                    </p>
+                    <div class="grid grid-cols-3 gap-4 mb-6">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-matrix-green">91%</div>
+                            <div class="text-sm text-quantum-silver/60">Accuracy</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-ionq-teal">1,056</div>
+                            <div class="text-sm text-quantum-silver/60">Samples</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-plasma-purple">&lt;2s</div>
+                            <div class="text-sm text-quantum-silver/60">Response Time</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-2 mb-6">
+                        <span class="px-3 py-1 bg-warm-amber/20 text-warm-amber text-sm rounded">React</span>
+                        <span class="px-3 py-1 bg-matrix-green/20 text-matrix-green text-sm rounded">Flask</span>
+                        <span class="px-3 py-1 bg-plasma-purple/20 text-plasma-purple text-sm rounded">XGBoost</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://devpost.com/software/trace-9ub1eg" target="_blank" class="text-ionq-teal hover:text-ionq-teal/80 font-mono transition-colors">View Demo →</a>
+                        <span class="text-quantum-silver/50 text-sm">Apr 2025</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Additional Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Captcha Plus -->
+                <div class="project-card glass-effect rounded-xl p-6" data-category="ml web">
+                    <div class="relative mb-4 overflow-hidden rounded-lg">
+                        <img src="resources/gesture-cv.jpg" alt="Captcha Plus" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-quantum-navy/80 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-warm-amber text-quantum-navy text-sm font-semibold rounded-full">Hackathon Winner</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-quantum-silver">Captcha Plus</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm leading-relaxed">
+                        Real-time webcam gesture authentication at 30+ FPS using OpenCV and Mediapipe, replacing traditional CAPTCHA with interactive hand symbol authentication.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-matrix-green/20 text-matrix-green text-xs rounded">OpenCV</span>
+                        <span class="px-2 py-1 bg-plasma-purple/20 text-plasma-purple text-xs rounded">Mediapipe</span>
+                        <span class="px-2 py-1 bg-ionq-teal/20 text-ionq-teal text-xs rounded">Flask</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/jaimanm/captcha-plus" target="_blank" class="text-ionq-teal hover:text-ionq-teal/80 font-mono text-sm transition-colors">View Code →</a>
+                        <span class="text-quantum-silver/50 text-xs">Feb 2024</span>
+                    </div>
+                </div>
+                
+                <!-- QML Hadron -->
+                <div class="project-card glass-effect rounded-xl p-6" data-category="quantum research">
+                    <div class="relative mb-4 overflow-hidden rounded-lg">
+                        <img src="resources/bloch-sphere.jpg" alt="QML Hadron" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-quantum-navy/80 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-plasma-purple text-quantum-silver text-sm font-semibold rounded-full">Research</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-quantum-silver">QML Hadron Simulation</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm leading-relaxed">
+                        Simulating experimental hadronization data using quantum generative models. 2+ semesters of UMD FIRE research with quantum ML applications.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-plasma-purple/20 text-plasma-purple text-xs rounded">PennyLane</span>
+                        <span class="px-2 py-1 bg-ionq-teal/20 text-ionq-teal text-xs rounded">Qiskit</span>
+                        <span class="px-2 py-1 bg-matrix-green/20 text-matrix-green text-xs rounded">Jupyter</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <a href="https://github.com/jaimanm/qml-hadron" target="_blank" class="text-ionq-teal hover:text-ionq-teal/80 font-mono text-sm transition-colors">View Research →</a>
+                        <span class="text-quantum-silver/50 text-xs">Ongoing</span>
+                    </div>
+                </div>
+                
+                <!-- GDIT RAG Pipeline -->
+                <div class="project-card glass-effect rounded-xl p-6" data-category="web ml">
+                    <div class="relative mb-4 overflow-hidden rounded-lg">
+                        <img src="resources/neural-network.jpg" alt="GDIT RAG Pipeline" class="w-full h-48 object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-quantum-navy/80 to-transparent"></div>
+                        <div class="absolute bottom-4 left-4">
+                            <span class="px-3 py-1 bg-matrix-green text-quantum-navy text-sm font-semibold rounded-full">Industry</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-quantum-silver">Agentic RAG Pipeline</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm leading-relaxed">
+                        Built agentic RAG pipeline processing 500K emails using Qdrant embeddings and Neo4j knowledge graph with sub-6s response times.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="px-2 py-1 bg-warm-amber/20 text-warm-amber text-xs rounded">React</span>
+                        <span class="px-2 py-1 bg-matrix-green/20 text-matrix-green text-xs rounded">Flask</span>
+                        <span class="px-2 py-1 bg-plasma-purple/20 text-plasma-purple text-xs rounded">Neo4j</span>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <span class="text-quantum-silver/50 text-xs">Feb - May 2025</span>
+                        <span class="text-matrix-green text-sm font-semibold">General Dynamics IT</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Matrix -->
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Technical <span class="text-ionq-teal">Expertise</span>
+                </h2>
+                <p class="text-xl text-quantum-silver/70 max-w-3xl mx-auto">
+                    A comprehensive skill set spanning quantum computing, machine learning, and software engineering.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Quantum Computing -->
+                <div class="glass-effect rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-plasma-purple rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-2xl">⚛️</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-plasma-purple">Quantum Computing</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">PennyLane</span>
+                                <span class="text-sm text-ionq-teal">90%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 90%; animation-delay: 0.2s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Qiskit (Certified)</span>
+                                <span class="text-sm text-ionq-teal">85%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 85%; animation-delay: 0.4s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Quantum ML</span>
+                                <span class="text-sm text-ionq-teal">80%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 80%; animation-delay: 0.6s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Machine Learning -->
+                <div class="glass-effect rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-matrix-green rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-2xl">🧠</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-matrix-green">Machine Learning</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">PyTorch</span>
+                                <span class="text-sm text-ionq-teal">95%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 95%; animation-delay: 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Computer Vision</span>
+                                <span class="text-sm text-ionq-teal">88%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 88%; animation-delay: 0.5s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Deep Learning</span>
+                                <span class="text-sm text-ionq-teal">92%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 92%; animation-delay: 0.7s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Software Engineering -->
+                <div class="glass-effect rounded-xl p-8">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-ionq-teal rounded-lg flex items-center justify-center mr-4">
+                            <span class="text-2xl">💻</span>
+                        </div>
+                        <h3 class="text-2xl font-bold text-ionq-teal">Software Engineering</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">React/Next.js</span>
+                                <span class="text-sm text-ionq-teal">90%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 90%; animation-delay: 0.1s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Python/Flask</span>
+                                <span class="text-sm text-ionq-teal">93%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 93%; animation-delay: 0.3s;"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="text-sm">Database Design</span>
+                                <span class="text-sm text-ionq-teal">85%</span>
+                            </div>
+                            <div class="w-full bg-quantum-navy rounded-full h-1">
+                                <div class="skill-bar" style="width: 85%; animation-delay: 0.5s;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Achievement Highlights -->
+    <section class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+                    Key <span class="text-ionq-teal">Achievements</span>
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="achievement-card glass-effect rounded-xl p-6 text-center">
+                    <div class="eagle-scout-badge w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center">
+                        <span class="text-3xl">🏆</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-quantum-silver mb-3">Eagle Scout</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm">
+                        Highest achievement in Scouts BSA, demonstrating leadership, service, and commitment to community values.
+                    </p>
+                    <span class="text-neon-blue font-mono text-sm">2020</span>
+                </div>
+                
+                <div class="achievement-card glass-effect rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-plasma-purple rounded-full flex items-center justify-center">
+                        <span class="text-3xl">⚛️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-quantum-silver mb-3">IBM Quantum Certified</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm">
+                        IBM Certified Qiskit v2.X Developer - Associate, validating quantum computing expertise.
+                    </p>
+                    <span class="text-plasma-purple font-mono text-sm">2024</span>
+                </div>
+                
+                <div class="achievement-card glass-effect rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-matrix-green rounded-full flex items-center justify-center">
+                        <span class="text-3xl">🎯</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-quantum-silver mb-3">3.98 GPA</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm">
+                        University of Maryland CS with minors in Statistics and Quantum Science & Engineering.
+                    </p>
+                    <span class="text-matrix-green font-mono text-sm">2023-Present</span>
+                </div>
+                
+                <div class="achievement-card glass-effect rounded-xl p-6 text-center">
+                    <div class="w-20 h-20 mx-auto mb-6 bg-neon-violet rounded-full flex items-center justify-center">
+                        <span class="text-3xl">🏛️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-quantum-silver mb-3">National Latin Exam Gold</h3>
+                    <p class="text-quantum-silver/70 mb-4 text-sm">
+                        Gold Medal in National Latin Exam, demonstrating excellence in classical studies.
+                    </p>
+                    <span class="text-neon-violet font-mono text-sm">2021</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 border-t border-ionq-teal/20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://github.com/jaimanm" target="_blank" class="text-quantum-silver hover:text-ionq-teal transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/jaimanmunshi" target="_blank" class="text-quantum-silver hover:text-ionq-teal transition-colors">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+            <p class="text-quantum-silver/50 text-sm font-mono">
+                © 2025 Jaiman Munshi. Crafted with quantum precision.
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        // Q-Sphere Navigator using Three.js
+        class QSphereNavigator {
+            constructor() {
+                this.scene = null;
+                this.camera = null;
+                this.renderer = null;
+                this.sphere = null;
+                this.projects = [];
+                this.selectedProject = null;
+                this.init();
+            }
+            
+            init() {
+                const container = document.getElementById('qsphere-container');
+                if (!container) return;
+                
+                // Scene setup
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+                this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+                this.renderer.setSize(container.clientWidth, container.clientHeight);
+                this.renderer.setClearColor(0x000000, 0);
+                container.appendChild(this.renderer.domElement);
+                
+                // Sphere geometry
+                const geometry = new THREE.SphereGeometry(3, 32, 32);
+                const material = new THREE.MeshBasicMaterial({
+                    color: 0x2DD4BF,
+                    wireframe: true,
+                    opacity: 0.3,
+                    transparent: true
+                });
+                this.sphere = new THREE.Mesh(geometry, material);
+                this.scene.add(this.sphere);
+                
+                // Project points (basis vectors)
+                const projectData = [
+                    { name: 'Sen2Fire', color: 0x2DD4BF, position: [2, 1, 2] },
+                    { name: 'Trace', color: 0x10B981, position: [-2, 2, 1] },
+                    { name: 'Captcha+', color: 0xF59E0B, position: [1, -2, 2] },
+                    { name: 'QML Hadron', color: 0x8B5CF6, position: [-1, -1, -2] },
+                    { name: 'RAG Pipeline', color: 0x00D4FF, position: [2, -1, -1] },
+                    { name: 'Retail System', color: 0x10B981, position: [-2, 1, -1] }
+                ];
+                
+                projectData.forEach((project, index) => {
+                    const pointGeometry = new THREE.SphereGeometry(0.1, 16, 16);
+                    const pointMaterial = new THREE.MeshBasicMaterial({ color: project.color });
+                    const point = new THREE.Mesh(pointGeometry, pointMaterial);
+                    point.position.set(...project.position);
+                    point.userData = project;
+                    this.scene.add(point);
+                    this.projects.push(point);
+                });
+                
+                // Camera position
+                this.camera.position.z = 8;
+                
+                // Lighting
+                const ambientLight = new THREE.AmbientLight(0x404040, 0.6);
+                this.scene.add(ambientLight);
+                
+                const pointLight = new THREE.PointLight(0x2DD4BF, 1, 100);
+                pointLight.position.set(5, 5, 5);
+                this.scene.add(pointLight);
+                
+                // Mouse controls
+                this.setupControls();
+                
+                // Animation loop
+                this.animate();
+            }
+            
+            setupControls() {
+                const container = document.getElementById('qsphere-container');
+                let isDragging = false;
+                let previousMousePosition = { x: 0, y: 0 };
+                
+                container.addEventListener('mousedown', (e) => {
+                    isDragging = true;
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                });
+                
+                container.addEventListener('mousemove', (e) => {
+                    if (!isDragging) return;
+                    
+                    const deltaMove = {
+                        x: e.clientX - previousMousePosition.x,
+                        y: e.clientY - previousMousePosition.y
+                    };
+                    
+                    this.sphere.rotation.y += deltaMove.x * 0.01;
+                    this.sphere.rotation.x += deltaMove.y * 0.01;
+                    
+                    this.projects.forEach(point => {
+                        point.rotation.y += deltaMove.x * 0.01;
+                        point.rotation.x += deltaMove.y * 0.01;
+                    });
+                    
+                    previousMousePosition = { x: e.clientX, y: e.clientY };
+                });
+                
+                container.addEventListener('mouseup', () => {
+                    isDragging = false;
+                });
+                
+                // Measure button
+                const measureBtn = document.getElementById('measure-btn');
+                measureBtn.addEventListener('click', () => {
+                    this.measureProject();
+                });
+            }
+            
+            measureProject() {
+                // Wavefunction collapse animation
+                const randomIndex = Math.floor(Math.random() * this.projects.length);
+                const selectedProject = this.projects[randomIndex];
+                
+                // Animate selection
+                anime({
+                    targets: selectedProject.scale,
+                    x: 1.5,
+                    y: 1.5,
+                    z: 1.5,
+                    duration: 500,
+                    easing: 'easeOutElastic(1, .6)',
+                    complete: () => {
+                        anime({
+                            targets: selectedProject.scale,
+                            x: 1,
+                            y: 1,
+                            z: 1,
+                            duration: 300,
+                            easing: 'easeOutQuad'
+                        });
+                    }
+                });
+                
+                // Show project details
+                this.showProjectDetails(selectedProject.userData);
+            }
+            
+            showProjectDetails(project) {
+                const detailsContainer = document.getElementById('project-details');
+                const projectContent = document.getElementById('project-content');
+                
+                const projectData = {
+                    'Sen2Fire': {
+                        title: 'Sen2Fire Wildfire Detection',
+                        description: 'UNet-based segmentation model detecting wildfires from satellite imagery, accelerated on HPC with quantum circuit integration.',
+                        technologies: ['PyTorch', 'PennyLane', 'HPC', 'Bash'],
+                        image: 'resources/wildfire-sat.jpg',
+                        link: 'https://github.com/jaimanm/wildfire-detection'
+                    },
+                    'Trace': {
+                        title: 'Trace: Parkinson\'s Monitoring',
+                        description: 'Health-tech platform achieving 91% accuracy across 5 motor skill metrics using XGBoost on multimodal data.',
+                        technologies: ['React', 'Flask', 'Supabase', 'OpenCV'],
+                        image: 'resources/parkinson-tech.jpg',
+                        link: 'https://devpost.com/software/trace-9ub1eg'
+                    },
+                    'Captcha+': {
+                        title: 'Captcha Plus Gesture Authentication',
+                        description: 'Real-time webcam gesture authentication at 30+ FPS using OpenCV and Mediapipe.',
+                        technologies: ['OpenCV', 'Mediapipe', 'Flask', 'NumPy'],
+                        image: 'resources/gesture-cv.jpg',
+                        link: 'https://github.com/jaimanm/captcha-plus'
+                    }
+                };
+                
+                const data = projectData[project.name] || projectData['Sen2Fire'];
+                
+                projectContent.innerHTML = `
+                    <div class="grid lg:grid-cols-2 gap-8 items-center">
+                        <div>
+                            <img src="${data.image}" alt="${data.title}" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-quantum-silver mb-4">${data.title}</h3>
+                            <p class="text-quantum-silver/70 mb-6 leading-relaxed">${data.description}</p>
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                ${data.technologies.map(tech => `<span class="px-3 py-1 bg-ionq-teal/20 text-ionq-teal text-sm rounded">${tech}</span>`).join('')}
+                            </div>
+                            <a href="${data.link}" target="_blank" class="text-ionq-teal hover:text-ionq-teal/80 font-mono transition-colors">View Project →</a>
+                        </div>
+                    </div>
+                `;
+                
+                detailsContainer.classList.remove('hidden');
+                anime({
+                    targets: detailsContainer,
+                    opacity: [0, 1],
+                    translateY: [20, 0],
+                    duration: 600,
+                    easing: 'easeOutQuad'
+                });
+            }
+            
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                // Rotate sphere slowly
+                this.sphere.rotation.y += 0.005;
+                
+                // Rotate projects around sphere
+                this.projects.forEach((point, index) => {
+                    const angle = (index / this.projects.length) * Math.PI * 2 + Date.now() * 0.001;
+                    const radius = 3;
+                    point.position.x = Math.cos(angle) * radius;
+                    point.position.z = Math.sin(angle) * radius;
+                    point.position.y = Math.sin(angle * 0.5) * 0.5;
+                });
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+        
+        // Initialize Q-Sphere when page loads
+        let qsphere;
+        document.addEventListener('DOMContentLoaded', () => {
+            qsphere = new QSphereNavigator();
+        });
+        
+        // Quantum Circuit Interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            const gates = document.querySelectorAll('.gate-rect');
+            gates.forEach(gate => {
+                gate.addEventListener('click', (e) => {
+                    const project = gate.getAttribute('data-project');
+                    if (qsphere) {
+                        qsphere.showProjectDetails({ name: project });
+                    }
+                    
+                    // Animate gate click
+                    anime({
+                        targets: gate,
+                        scale: [1, 1.2, 1],
+                        duration: 300,
+                        easing: 'easeOutElastic(1, .6)'
+                    });
+                });
+            });
+        });
+        
+        // Measurement Histogram using ECharts
+        document.addEventListener('DOMContentLoaded', () => {
+            const histogramChart = echarts.init(document.getElementById('histogram-container'));
+            histogramChart.setOption({
+                title: {
+                    text: 'Skill Probability Distribution',
+                    textStyle: { color: '#E8EDF5', fontSize: 14 }
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    backgroundColor: 'rgba(11, 20, 38, 0.9)',
+                    borderColor: '#2DD4BF',
+                    textStyle: { color: '#E8EDF5' }
+                },
+                xAxis: {
+                    type: 'category',
+                    data: ['Python', 'Quantum', 'Web Dev', 'Research', 'ML', 'Leadership'],
+                    axisLine: { lineStyle: { color: '#2DD4BF' } },
+                    axisLabel: { color: '#E8EDF5', fontSize: 10 }
+                },
+                yAxis: {
+                    type: 'value',
+                    max: 100,
+                    axisLine: { lineStyle: { color: '#2DD4BF' } },
+                    axisLabel: { color: '#E8EDF5' },
+                    splitLine: { lineStyle: { color: 'rgba(45, 212, 191, 0.2)' } }
+                },
+                series: [{
+                    data: [95, 85, 90, 88, 92, 87],
+                    type: 'bar',
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                            { offset: 0, color: '#2DD4BF' },
+                            { offset: 1, color: '#8B5CF6' }
+                        ])
+                    },
+                    barWidth: '60%'
+                }]
+            });
+        });
+        
+        // Utility functions
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // Typewriter effect
+            const typed = new Typed('#typed-text', {
+                strings: [
+                    'Quantum Computing Researcher',
+                    'Machine Learning Engineer', 
+                    'Software Developer',
+                    'AI & Quantum Enthusiast'
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                backDelay: 2000,
+                loop: true,
+                showCursor: false
+            });
+            
+            // Setup quantum background
+            setupQuantumBackground();
+            
+            // Initial animations
+            anime({
+                targets: '.glass-effect',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 600,
+                delay: anime.stagger(100),
+                easing: 'easeOutQuad'
+            });
+        });
+        
+        // Quantum background animation
+        function setupQuantumBackground() {
+            new p5((p) => {
+                let particles = [];
+                let time = 0;
+                
+                p.setup = () => {
+                    const canvas = p.createCanvas(p.windowWidth, p.windowHeight);
+                    canvas.parent('quantum-bg');
+                    canvas.style('position', 'fixed');
+                    canvas.style('top', '0');
+                    canvas.style('left', '0');
+                    canvas.style('z-index', '-1');
+                    
+                    for (let i = 0; i < 50; i++) {
+                        particles.push({
+                            x: p.random(p.width),
+                            y: p.random(p.height),
+                            vx: p.random(-0.5, 0.5),
+                            vy: p.random(-0.5, 0.5),
+                            size: p.random(1, 3),
+                            phase: p.random(p.TWO_PI)
+                        });
+                    }
+                };
+                
+                p.draw = () => {
+                    p.clear();
+                    time += 0.01;
+                    
+                    p.stroke(45, 212, 191, 30);
+                    p.strokeWeight(1);
+                    p.noFill();
+                    
+                    for (let x = 0; x < p.width; x += 100) {
+                        for (let y = 0; y < p.height; y += 100) {
+                            const wave = p.sin(time + x * 0.01 + y * 0.01) * 20;
+                            p.ellipse(x, y, 50 + wave, 50 + wave);
+                        }
+                    }
+                    
+                    particles.forEach((particle, index) => {
+                        particle.x += particle.vx + p.sin(time + particle.phase) * 0.2;
+                        particle.y += particle.vy + p.cos(time + particle.phase) * 0.2;
+                        
+                        if (particle.x < 0) particle.x = p.width;
+                        if (particle.x > p.width) particle.x = 0;
+                        if (particle.y < 0) particle.y = p.height;
+                        if (particle.y > p.height) particle.y = 0;
+                        
+                        const alpha = p.map(p.sin(time + index), -1, 1, 50, 150);
+                        p.fill(45, 212, 191, alpha);
+                        p.noStroke();
+                        p.ellipse(particle.x, particle.y, particle.size, particle.size);
+                    });
+                };
+                
+                p.windowResized = () => {
+                    p.resizeCanvas(p.windowWidth, p.windowHeight);
+                };
+            });
+        }
+    </script>
+</body>
+</html>
